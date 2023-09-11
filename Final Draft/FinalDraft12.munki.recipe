@@ -20,6 +20,14 @@
 			<string>Final Draft</string>
 			<key>name</key>
 			<string>%NAME%</string>
+	<key>postinstall_script</key>
+	<string>#!/bin/sh
+
+APP_BUNDLE="/Applications/Final Draft 12.app/Contents"
+SERVICE="${APP_BUNDLE}/MacOS/FNPLicensingService"
+INSTALL_SCRIPT="${APP_BUNDLE}/Resources/install_fnp.sh"
+
+"${INSTALL_SCRIPT}" "${SERVICE}"</string>			
 			<key>unattended_install</key>
 			<true/>
 			<key>unattended_uninstall</key>
