@@ -72,7 +72,7 @@
 			<dict>
 				<key>additional_makepkginfo_options</key>
 				<array>
-					<string>--item</string>
+					<string>--itemname</string>
 					<string>%NAME%.jar</string>
 					<string>--destinationpath</string>
 					<string>/Applications/ImageJ.app/plugins/bioformats_package/</string>
