@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Recipe description</string>
+	<key>Identifier</key>
+	<string>com.github.vmiller.download.GlobalProtect</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>GlobalProtect</string>
+		<key>GP_URL</key>
+		<string>https://pan-gp-client.s3.amazonaws.com</string>
+		<key>MAJOR_VERSION</key>
+		<string>6.3</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>1.0</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>re_pattern</key>
+				<string>%MAJOR_VERSION%\.[0-9]-\d\d*</string>
+				<key>url</key>
+				<string>%GP_URL%</string>
+				<key>result_output_var_name</key>
+				<string>gp_version</string>
+			</dict>
+			<key>Processor</key>
+			<string>com.github.vmiller.URLHighestVersionTextSearcher/URLHighestVersionTextSearcher</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>%GP_URL%/%gp_version%/GlobalProtect.pkg</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+			</dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+	</array>
+</dict>
+</plist>
