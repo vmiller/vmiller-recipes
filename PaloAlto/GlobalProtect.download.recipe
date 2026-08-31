@@ -48,6 +48,21 @@
 			<key>Processor</key>
 			<string>EndOfCheckPhase</string>
 		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>input_path</key>
+				<string>%RECIPE_CACHE_DIR%/downloads/GlobalProtect.pkg</string>
+				<key>expected_authority_names</key>
+				<array>
+					<string>Developer ID Installer: Palo Alto Networks (PXPZ95SK77)</string>
+					<string>Developer ID Certification Authority</string>
+					<string>Apple Root CA</string>
+				</array>
+			</dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
+		</dict>
 	</array>
 </dict>
 </plist>
