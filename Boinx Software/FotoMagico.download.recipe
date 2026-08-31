@@ -24,7 +24,6 @@
 				<string>FotoMagico-[0-9].*-Boinx-\([0-9]*\).app.zip</string>
 				<key>url</key>
 				<string>https://fotomagico.com/download/fm6/</string>
-				<!-- <string>https://fotomagico.com/download/%match%/</string> -->
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
