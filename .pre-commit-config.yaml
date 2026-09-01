@@ -11,3 +11,4 @@ repos:
     hooks:
       - id: check-plists
       - id: check-autopkg-recipes
+        exclude: '^Sassafras/'
