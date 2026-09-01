@@ -5,7 +5,7 @@
 	<key>Description</key>
 	<string>Downloads the latest GlobalProtect client for a given major version (i.e. 6.2, 6.3, 6.4).</string>
 	<key>Identifier</key>
-	<string>com.github.vmiller.download.GlobalProtect</string>
+	<string>com.github.vmiller.download.globalprotect</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
