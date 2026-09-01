@@ -3,14 +3,14 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Recipe description</string>
+	<string>Downloads the latest GlobalProtect client for a given major version (i.e. 6.2, 6.3, 6.4).</string>
 	<key>Identifier</key>
 	<string>com.github.vmiller.download.GlobalProtect</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
 		<string>GlobalProtect</string>
-		<key>GP_URL</key>
+		<key>URL</key>
 		<string>https://pan-gp-client.s3.amazonaws.com</string>
 		<key>MAJOR_VERSION</key>
 		<string>6.3</string>
@@ -25,9 +25,9 @@
 				<key>re_pattern</key>
 				<string>%MAJOR_VERSION%\.[0-9]-\d\d*</string>
 				<key>url</key>
-				<string>%GP_URL%</string>
+				<string>%URL%</string>
 				<key>result_output_var_name</key>
-				<string>gp_version</string>
+				<string>version</string>
 			</dict>
 			<key>Processor</key>
 			<string>com.github.vmiller.URLHighestVersionTextSearcher/URLHighestVersionTextSearcher</string>
@@ -36,7 +36,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>url</key>
-				<string>%GP_URL%/%gp_version%/GlobalProtect.pkg</string>
+				<string>%URL%/%version%/GlobalProtect.pkg</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
