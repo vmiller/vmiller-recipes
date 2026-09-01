@@ -8,12 +8,12 @@
 	<string>com.github.vmiller.download.globalprotect</string>
 	<key>Input</key>
 	<dict>
+		<key>MAJOR_VERSION</key>
+		<string>6.3</string>
 		<key>NAME</key>
 		<string>GlobalProtect</string>
 		<key>URL</key>
 		<string>https://pan-gp-client.s3.amazonaws.com</string>
-		<key>MAJOR_VERSION</key>
-		<string>6.3</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>1.0</string>
@@ -24,10 +24,10 @@
 			<dict>
 				<key>re_pattern</key>
 				<string>%MAJOR_VERSION%\.[0-9]-\d\d*</string>
-				<key>url</key>
-				<string>%URL%</string>
 				<key>result_output_var_name</key>
 				<string>version</string>
+				<key>url</key>
+				<string>%URL%</string>
 			</dict>
 			<key>Processor</key>
 			<string>com.github.vmiller.URLHighestVersionTextSearcher/URLHighestVersionTextSearcher</string>
@@ -43,22 +43,21 @@
 		</dict>
 		<dict>
 			<key>Arguments</key>
-			<dict>
-			</dict>
+			<dict/>
 			<key>Processor</key>
 			<string>EndOfCheckPhase</string>
 		</dict>
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>input_path</key>
-				<string>%RECIPE_CACHE_DIR%/downloads/GlobalProtect.pkg</string>
 				<key>expected_authority_names</key>
 				<array>
 					<string>Developer ID Installer: Palo Alto Networks (PXPZ95SK77)</string>
 					<string>Developer ID Certification Authority</string>
 					<string>Apple Root CA</string>
 				</array>
+				<key>input_path</key>
+				<string>%RECIPE_CACHE_DIR%/downloads/GlobalProtect.pkg</string>
 			</dict>
 			<key>Processor</key>
 			<string>CodeSignatureVerifier</string>

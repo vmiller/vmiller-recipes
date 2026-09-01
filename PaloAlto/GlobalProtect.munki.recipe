@@ -28,8 +28,8 @@
 			<string>GlobalProtect VPN</string>
 			<key>name</key>
 			<string>%NAME%</string>
-	<key>preuninstall_script</key>
-	<string>#!/bin/sh -x
+			<key>preuninstall_script</key>
+			<string>#!/bin/sh -x
 
 loggedInUserID=$( echo "show State:/Users/ConsoleUser" | scutil | awk '/kCGSSessionUserIDKey :/ { print $3 }' )
 
@@ -37,10 +37,10 @@ loggedInUserID=$( echo "show State:/Users/ConsoleUser" | scutil | awk '/kCGSSess
 /bin/launchctl bootout gui/$loggedInUserID/com.paloaltonetworks.gp.pangps
 
 exit 0</string>
-	<key>uninstall_method</key>
-	<string>uninstall_script</string>
-    <key>uninstall_script</key>
-    <string>#!/bin/sh
+			<key>uninstall_method</key>
+			<string>uninstall_script</string>
+			<key>uninstall_script</key>
+			<string>#!/bin/sh
 
 is_debug=1
 if [[ "$1" ]] &amp;&amp;  [ $1 = "-d" ]; then
@@ -328,8 +328,8 @@ exit_code=0
     exit $exit_code
 )  2&gt;&amp;1) &gt;&gt; ${uninstall_log_dir}
 </string>
-	<key>uninstallable</key>
-	<true/>
+			<key>uninstallable</key>
+			<true/>
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>
