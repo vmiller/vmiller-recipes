@@ -1,8 +1,11 @@
 #!/usr/local/autopkg/python
 #
-# Refactoring 2018 Michal Moravec
-# Copyright 2015 Greg Neagle
-# Based on URLTextSearcher.py, Copyright 2014 Jesse Peterson
+# Vaughn Miller 2026
+#
+# Based on URLTextSearcher processor :
+#   Refactoring 2018 Michal Moravec
+#   Copyright 2015 Greg Neagle
+#   Based on URLTextSearcher.py, Copyright 2014 Jesse Peterson
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -31,7 +34,7 @@ __all__ = ["URLHighestVersionTextSearcher"]
 
 class URLHighestVersionTextSearcher(URLGetter):
     """Downloads a URL using curl and performs a regular expression match
-    on the text."""
+    on the text to get a list of values.  Returns the highest value from the list."""
 
     description = __doc__
     lifecycle = {"introduced": "0.2.9"}
@@ -78,7 +81,7 @@ class URLHighestVersionTextSearcher(URLGetter):
     output_variables = {
         "result_output_var_name": {
             "description": (
-                "First matched sub-pattern from input found on the fetched "
+                "Highest matched sub-pattern from input found on the fetched "
                 "URL. Note the actual name of variable depends on the input "
                 'variable "result_output_var_name" or is assigned a default of '
                 '"match."'
@@ -105,13 +108,13 @@ class URLHighestVersionTextSearcher(URLGetter):
         """Search for re_pattern in content"""
 
         re_pattern = re.compile(self.env["re_pattern"], flags=self.prepare_re_flags())
-        match = re_pattern.findall(content)
+        matches = re_pattern.findall(content)
 
-        if not match:
+        if not matches:
             raise ProcessorError(f"{NO_MATCH_MESSAGE}: {self.env['url']}")
 
         # return the list of matches
-        return (match)
+        return (matches)
 
     def main(self) -> None:
         output_var_name = self.env["result_output_var_name"]
@@ -121,15 +124,13 @@ class URLHighestVersionTextSearcher(URLGetter):
 
         # Execute curl command and search in content
         content = self.download_with_curl(curl_cmd)
-        groupmatch = self.re_search(content)
+        matchlist = self.re_search(content)
 
         # Iterate through the list of matches to find the highest
         highversion = "0"
-        for versionitem in groupmatch:
+        for versionitem in matchlist:
             if Version(versionitem) > Version(highversion):
                 highversion = versionitem
-        groupmatch = highversion
-
 
         self.env[output_var_name] = highversion
 
